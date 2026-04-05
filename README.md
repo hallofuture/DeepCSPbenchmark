@@ -146,4 +146,4 @@ Please also cite the original CSPBench paper:
 
 ## Contact
 
-For questions or support, please contact [jianjunh@cse.sc.edu](mailto:jianjunh@cse.sc.edu) or open an issue on this repository.
+For questions or support, please contact [lw36@email.sc.edu](mailto:lw36@email.sc.edu) or open an issue on this repository.

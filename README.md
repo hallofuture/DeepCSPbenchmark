@@ -36,10 +36,12 @@ LVA = latent-variable and autoencoder models; DFF = diffusion and flow-based mod
 ---
 
 ## Benchmark Results
-
+ 
 ### Performance on the Full 180-Structure Test Set
-
+ 
 Evaluation uses Pymatgen's StructureMatcher with `ltol=0.2, stol=0.3, angle_tol=5` and space group tolerance of 10. CHGNet is used as a surrogate potential for structure relaxation prior to comparison. Results reported as mean across ten independent evaluations.
+ 
+![Algorithm Performance on 180 Test Set](images/figure1_180_benchmark.png)
 
 | Algorithm | StructureMatcher Rate | Space Group Match Rate | Consensus Rate |
 |-----------|----------------------|----------------------|----------------|
@@ -59,7 +61,10 @@ Evaluation uses Pymatgen's StructureMatcher with `ltol=0.2, stol=0.3, angle_tol=
 
 ### Performance on the 46-Structure CLEAN Subset
 
-The CLEAN subset explicitly excludes structures that may overlap with the training or validation data of publicly released pre-trained models, providing a leakage-controlled generalization assessment.
+The CLEAN subset explicitly excludes structures that may overlap with the training or validation data of publicly released pre-trained models.
+ 
+![Algorithm Performance on 46 CLEAN Test Set](images/figure2_46_benchmark.png)
+
 
 | Algorithm | StructureMatcher Rate | Space Group Match Rate | Consensus Rate |
 |-----------|----------------------|----------------------|----------------|
@@ -78,6 +83,10 @@ The CLEAN subset explicitly excludes structures that may overlap with the traini
 | SymmCD | 0.7% | 2.2% | 0.0% |
 
 ---
+
+### Heatmap Comparison (Full vs. CLEAN)
+ 
+![CSP Benchmark Heatmap](images/figure3_heatmap.png)
 
 ## Key Findings
 

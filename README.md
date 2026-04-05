@@ -1,1 +1,160 @@
-# DeepCSPbenchmark
+# Deep Learning Crystal Structure Prediction: An Evaluation
+
+Developed by Lai Wei and Dr. Jianjun Hu at [Machine Learning and Evolution Laboratory](http://mleg.cse.sc.edu), University of South Carolina.
+
+**Preprint:** Wei, Lai, Rongzhi Dong, and Jianjun Hu. "Deep Learning Crystal Structure Prediction: An Evaluation." arXiv preprint (2026). [[paper](Link)]
+
+---
+
+## Overview
+
+We present a unified and leakage-controlled benchmark for evaluating deep learning-based crystal structure prediction (CSP) methods under consistent structural matching and symmetry criteria. We systematically assess **12 representative generative models** spanning latent-variable, diffusion, flow-based, and autoregressive paradigms, together with a template-based baseline (TCSP 2.0), across **180 diverse crystal structures** and a rigorously filtered **46-structure CLEAN subset**.
+
+---
+
+## Evaluated Algorithms
+
+| Algorithm | Year | Category | Code |
+|-----------|------|----------|------|
+| TCSP 2.0 | 2022 | Template-based | [link](https://github.com/usccolumbia/TCSP) |
+| CDVAE | 2021 | Latent-variable (VAE) | [link](https://github.com/txie-93/cdvae) |
+| cond-CDVAE | 2024 | Latent-variable (VAE) | [link](https://github.com/luoxsh/cond-cdvae) |
+| DiffCSP | 2023 | Diffusion | [link](https://github.com/jiaor17/DiffCSP) |
+| EquiCSP | 2024 | Diffusion (equivariant) | [link](https://github.com/PeijiaLin-ai/EquiCSP) |
+| GemsDiff | 2024 | Diffusion (hierarchical) | [link](https://github.com/aklipfel/GemsDiff) |
+| MatterGen | 2023 | Score-based diffusion | [link](https://github.com/microsoft/mattergen) |
+| CrystalFlow | 2024 | Flow-matching | [link](https://github.com/luoxsh/CrystalFlow) |
+| TGDMat | 2025 | Text-guided diffusion | [link](https://github.com/kdas0501/TGDMat) |
+| SymmCD | 2025 | Symmetry-aware diffusion | [link](https://github.com/siamakshahi/SymmCD) |
+| Uni-3DAR | 2025 | Autoregressive transformer | [link](https://github.com/dptech-corp/Uni-3DAR) |
+| CrystalGRW | 2025 | Generative random walk | [link](https://github.com/KritTangsongcharoen/CrystalGRW) |
+| OMatG | 2025 | Stochastic interpolant | [link](https://github.com/Open-Catalyst-Project/OMatG) |
+
+---
+
+## Benchmark Results
+
+### Performance on the Full 180-Structure Test Set
+
+Evaluation uses Pymatgen's StructureMatcher with `ltol=0.2, stol=0.3, angle_tol=5` and space group tolerance of 10. CHGNet is used as a surrogate potential for structure relaxation prior to comparison. Results reported as mean across ten independent evaluations.
+
+| Algorithm | StructureMatcher Rate | Space Group Match Rate | Consensus Rate |
+|-----------|----------------------|----------------------|----------------|
+| TCSP 2.0 | **68.3%** | **70.6%** | **64.4%** |
+| EquiCSP | 66.4% | 62.5% | 58.2% |
+| Uni-3DAR | 62.9% | 60.5% | 57.7% |
+| DiffCSP | 59.2% | 60.8% | 56.4% |
+| MatterGen | 57.1% | 58.8% | 53.3% |
+| CrystalFlow | 54.9% | 25.9% | 24.7% |
+| TGDMat | 45.6% | 39.2% | 35.6% |
+| GemsDiff | 22.8% | 16.7% | 14.0% |
+| OMatG | 15.7% | 4.6% | 4.0% |
+| CrystalGRW | 5.1% | 6.8% | 5.1% |
+| SymmCD | 3.2% | 3.4% | 2.7% |
+| CDVAE | 2.7% | 1.1% | 0.3% |
+| cond-CDVAE | 2.2% | 0.8% | 0.2% |
+
+### Performance on the 46-Structure CLEAN Subset
+
+The CLEAN subset explicitly excludes structures that may overlap with the training or validation data of publicly released pre-trained models, providing a leakage-controlled generalization assessment.
+
+| Algorithm | StructureMatcher Rate | Space Group Match Rate | Consensus Rate |
+|-----------|----------------------|----------------------|----------------|
+| TCSP 2.0 | **56.5%** | **65.2%** | **52.2%** |
+| EquiCSP | 51.7% | 54.6% | 47.0% |
+| DiffCSP | 48.9% | 56.5% | 48.0% |
+| MatterGen | 48.3% | 56.3% | 46.1% |
+| Uni-3DAR | 44.8% | 47.0% | 40.4% |
+| CrystalFlow | 46.1% | 23.5% | 20.9% |
+| TGDMat | 37.0% | 36.5% | 30.2% |
+| OMatG | 15.5% | 4.3% | 3.2% |
+| GemsDiff | 15.0% | 12.4% | 8.7% |
+| CDVAE | 1.7% | 2.4% | 0.2% |
+| cond-CDVAE | 1.5% | 2.2% | 0.0% |
+| CrystalGRW | 1.1% | 3.0% | 1.1% |
+| SymmCD | 0.7% | 2.2% | 0.0% |
+
+---
+
+## Key Findings
+
+- **Template-based TCSP 2.0** achieves the highest overall StructureMatcher success rate (~70%), reflecting strong agreement with known structural prototypes when suitable templates exist.
+- **Symmetry-aware equivariant models** (EquiCSP, DiffCSP) demonstrate competitive performance and independent successes beyond template matching, with EquiCSP reaching ~66%.
+- **Autoregressive Uni-3DAR** (~63%) shows that sequence modeling can effectively capture long-range crystallographic dependencies.
+- **Latent-variable models** (CDVAE, cond-CDVAE) show the lowest StructureMatcher and space-group match rates (<5%), indicating limited effectiveness under standardized evaluation.
+- **CLEAN subset results** confirm that performance hierarchies are largely stable under leakage-controlled conditions.
+
+---
+
+## Test Set Details
+
+The 180-structure benchmark spans binary to quaternary compositions, multiple crystal systems, and varying structural complexity. Data is sourced from the Materials Project database.
+
+You can download the full test set: [link](https://github.com/usccolumbia/cspbenchmark/blob/main/data/CSPbenchmark_test_data.csv)
+
+### Category Distribution
+
+| Category | Count | Description |
+|----------|-------|-------------|
+| binary_easy | 36 | Binary compounds, cubic/high-symmetry |
+| binary_medium | 36 | Binary compounds, lower symmetry |
+| binary_hard | 36 | Binary compounds, complex unit cells |
+| ternary_easy | 18 | Ternary, high symmetry |
+| ternary_medium | 18 | Ternary, moderate complexity |
+| ternary_hard | 18 | Ternary, complex |
+| quaternary | 18 | Quaternary compounds |
+
+### Data Sample
+
+| material_id | primitive_formula | full_formula | pretty_formula | nsites | spacegroup | nelements | CrystalSystem | category |
+|-------------|-------------------|--------------|----------------|--------|------------|-----------|---------------|----------|
+| mp-2334 | DyCu | DyCu | DyCu | 2 | 221 | 2 | Cubic | binary_easy |
+| mp-2226 | DyPd | DyPd | DyPd | 2 | 221 | 2 | Cubic | binary_easy |
+| mp-1121 | GaCo | GaCo | GaCo | 2 | 221 | 2 | Cubic | binary_easy |
+| mp-20132 | InHg | In3Hg3 | InHg | 2 | 166 | 2 | Trigonal | binary_medium |
+| mp-2735 | PaO | Pa4O4 | PaO | 2 | 225 | 2 | Cubic | binary_easy |
+| mp-13452 | BePd2 | Be2Pd4 | BePd2 | 3 | 139 | 2 | Tetragonal | binary_hard |
+| mp-2209 | CeGa2 | CeGa2 | CeGa2 | 3 | 191 | 2 | Hexagonal | binary_medium |
+
+---
+
+## Evaluation Protocol
+
+All evaluations use:
+- **Structure matching**: Pymatgen `StructureMatcher` with `ltol=0.2, stol=0.3, angle_tol=5, primitive_cell=True`
+- **Space group comparison**: symmetry tolerance of 10
+- **Relaxation**: CHGNet universal neural network potential for structure relaxation prior to comparison
+- **Metrics**: StructureMatcher Success Rate, Space Group Match Rate, Consensus Rate (SM + SG)
+- **Runs**: Mean and standard deviation across 10 independent evaluations
+
+### Evaluation Code
+
+https://github.com/usccolumbia/cspbenchmark/blob/main/eval/success_rates.py
+
+---
+
+## Citation
+
+If you use this benchmark, please cite:
+
+```bibtex
+
+...
+```
+
+Please also cite the original CSPBench paper:
+
+```bibtex
+@article{wei2024cspbench,
+  title={Cspbench: a benchmark and critical evaluation of crystal structure prediction},
+  author={Wei, Lai and Omee, Sadman Sadeed and Dong, Rongzhi and Fu, Nihang and Song, Yuqi and Siriwardane, Edirisuriya and Xu, Meiling and Wolverton, Chris and Hu, Jianjun},
+  journal={arXiv preprint arXiv:2407.00733},
+  year={2024}
+}
+```
+
+---
+
+## Contact
+
+For questions or support, please contact [jianjunh@cse.sc.edu](mailto:jianjunh@cse.sc.edu) or open an issue on this repository.

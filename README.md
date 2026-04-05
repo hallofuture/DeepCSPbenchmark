@@ -13,22 +13,25 @@ We present a unified and leakage-controlled benchmark for evaluating deep learni
 ---
 
 ## Evaluated Algorithms
+Baseline: TCSP 2.0：[link](https://github.com/usccolumbia/TCSP) 
 
-| Algorithm | Year | Category | Code |
-|-----------|------|----------|------|
-| TCSP 2.0 | 2022 | Template-based | [link](https://github.com/usccolumbia/TCSP) |
-| CDVAE | 2021 | Latent-variable (VAE) | [link](https://github.com/txie-93/cdvae) |
-| cond-CDVAE | 2024 | Latent-variable (VAE) | [link](https://github.com/luoxsh/cond-cdvae) |
-| DiffCSP | 2023 | Diffusion | [link](https://github.com/jiaor17/DiffCSP) |
-| EquiCSP | 2024 | Diffusion (equivariant) | [link](https://github.com/PeijiaLin-ai/EquiCSP) |
-| GemsDiff | 2024 | Diffusion (hierarchical) | [link](https://github.com/aklipfel/GemsDiff) |
-| MatterGen | 2023 | Score-based diffusion | [link](https://github.com/microsoft/mattergen) |
-| CrystalFlow | 2024 | Flow-matching | [link](https://github.com/luoxsh/CrystalFlow) |
-| TGDMat | 2025 | Text-guided diffusion | [link](https://github.com/kdas0501/TGDMat) |
-| SymmCD | 2025 | Symmetry-aware diffusion | [link](https://github.com/siamakshahi/SymmCD) |
-| Uni-3DAR | 2025 | Autoregressive transformer | [link](https://github.com/dptech-corp/Uni-3DAR) |
-| CrystalGRW | 2025 | Generative random walk | [link](https://github.com/KritTangsongcharoen/CrystalGRW) |
-| OMatG | 2025 | Stochastic interpolant | [link](https://github.com/Open-Catalyst-Project/OMatG) |
+LVA = latent-variable and autoencoder models; DFF = diffusion and flow-based models; ARQ = autoregressive and sequential models.
+
+| Category | Method | Year | Core Innovation / Key Feature | Code |
+|----------|--------|------|-------------------------------|------|
+| LVA | CDVAE | 2021 | Hybrid VAE-diffusion framework for crystal generation | [link](https://github.com/txie-93/cdvae) |
+| LVA | cond-CDVAE | 2024 | Composition-conditioned variational diffusion model | [link](https://github.com/ixsluo/cond-cdvae) |
+| DFF | DiffCSP | 2023 | Periodic E(3)-equivariant diffusion for lattice and atoms | [link](https://github.com/jiaor17/DiffCSP) |
+| DFF | EquiCSP | 2024 | One-shot SE(3)-equivariant generation via learned bases | [link](https://github.com/EmperorJia/EquiCSP) |
+| DFF | GemsDiff | 2024 | Hierarchical diffusion with explicit space-group control | [link](https://github.com/aklipf/gemsdiff) |
+| DFF | MatterGen | 2023 | Score-based generation in Cartesian coordinates | [link](https://github.com/microsoft/mattergen) |
+| DFF | CrystalFlow | 2024 | Deterministic flow-matching for continuous generation | [link](https://github.com/ixsluo/CrystalFlow) |
+| DFF | TGDMat | 2025 | Text-guided joint diffusion for composition and properties | [link](https://github.com/kdmsit/TGDMat) |
+| DFF | SymmCD | 2025 | Symmetry-aware conditional diffusion with joint denoising | [link](https://github.com/sibasmarak/SymmCD) |
+| DFF | OMatG | 2025 | Stochastic-interpolant framework for CSP | [link](https://github.com/FERMat-ML/OMatG) |
+| ARQ | Uni-3DAR | 2025 | Unified autoregressive transformer for crystals and molecules | [link](https://github.com/dptech-corp/Uni-3DAR) |
+| ARQ | CrystalGRW | 2025 | Generative random walk for sequential atom placement | [link](https://github.com/trachote/crystalgrw) |
+
 
 ---
 

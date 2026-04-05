@@ -2,7 +2,7 @@
 
 Developed by Lai Wei and Dr. Jianjun Hu at [Machine Learning and Evolution Laboratory](http://mleg.cse.sc.edu), University of South Carolina.
 
-**Preprint:** Wei, Lai, Rongzhi Dong, and Jianjun Hu. "Deep Learning Crystal Structure Prediction: An Evaluation." arXiv preprint (2026). [[paper](Link)]
+**Preprint:** Lai, Wei, Rongzhi Dong, and Jianjun Hu. "Deep Learning Crystal Structure Prediction: An Evaluation." arXiv preprint (2026). [[paper](Link)]
 
 ---
 

@@ -92,19 +92,8 @@ The 180-structure benchmark spans binary to quaternary compositions, multiple cr
 
 You can download the full test set: [link](https://github.com/usccolumbia/cspbenchmark/blob/main/data/CSPbenchmark_test_data.csv)
 
-### Category Distribution
 
-| Category | Count | Description |
-|----------|-------|-------------|
-| binary_easy | 36 | Binary compounds, cubic/high-symmetry |
-| binary_medium | 36 | Binary compounds, lower symmetry |
-| binary_hard | 36 | Binary compounds, complex unit cells |
-| ternary_easy | 18 | Ternary, high symmetry |
-| ternary_medium | 18 | Ternary, moderate complexity |
-| ternary_hard | 18 | Ternary, complex |
-| quaternary | 18 | Quaternary compounds |
-
-### Data Sample
+### Data Sample example
 
 | material_id | primitive_formula | full_formula | pretty_formula | nsites | spacegroup | nelements | CrystalSystem | category |
 |-------------|-------------------|--------------|----------------|--------|------------|-----------|---------------|----------|

@@ -88,14 +88,6 @@ The CLEAN subset explicitly excludes structures that may overlap with the traini
  
 ![CSP Benchmark Heatmap](images/figure3_heatmap.png)
 
-## Key Findings
-
-- **Template-based TCSP 2.0** achieves the highest overall StructureMatcher success rate (~70%), reflecting strong agreement with known structural prototypes when suitable templates exist.
-- **Symmetry-aware equivariant models** (EquiCSP, DiffCSP) demonstrate competitive performance and independent successes beyond template matching, with EquiCSP reaching ~66%.
-- **Autoregressive Uni-3DAR** (~63%) shows that sequence modeling can effectively capture long-range crystallographic dependencies.
-- **Latent-variable models** (CDVAE, cond-CDVAE) show the lowest StructureMatcher and space-group match rates (<5%), indicating limited effectiveness under standardized evaluation.
-- **CLEAN subset results** confirm that performance hierarchies are largely stable under leakage-controlled conditions.
-
 ---
 
 ## Test Set Details
